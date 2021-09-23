@@ -18,8 +18,7 @@ $result = $zip->zip();
 d($result);
 d(directory_map(__DIR__ . '/../tmp'));
 
-$zip->setExtractFolder(__DIR__ . '/../tmp/testExtractFolder');
+$zip->setExtractFolder(__DIR__ . '/../tmp');
 $extract = $zip->unzip();
 d($extract);
 d(directory_map(__DIR__ . '/../tmp'));
-d(directory_map(__DIR__ . '/../tmp/testExtractFolder'));
