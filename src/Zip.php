@@ -11,6 +11,7 @@
 namespace nguyenanhung\Libraries\Zip;
 
 use Alchemy\Zippy\Zippy;
+use Alchemy\Zippy\Archive\ArchiveInterface;
 
 /**
  * Class Zip
@@ -50,7 +51,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 00:45
      */
-    public static function setup()
+    public static function setup(): Zippy
     {
         return Zippy::load();
     }
@@ -63,7 +64,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 18:55
      */
-    public function isStatus()
+    public function isStatus(): bool
     {
         return $this->status;
     }
@@ -76,7 +77,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 18:48
      */
-    public function getMessage()
+    public function getMessage(): string
     {
         return $this->message;
     }
@@ -91,7 +92,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 02:56
      */
-    public function setFilename($filename = '')
+    public function setFilename(string $filename = ''): Zip
     {
         $this->filename = $filename;
 
@@ -106,7 +107,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 03:06
      */
-    public function getFilename()
+    public function getFilename(): string
     {
         return $this->filename;
     }
@@ -121,7 +122,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 03:24
      */
-    public function setExtractFolder($extractFolder = '')
+    public function setExtractFolder(string $extractFolder = ''): Zip
     {
         $this->extractFolder = $extractFolder;
 
@@ -136,7 +137,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 04:33
      */
-    public function getExtractFolder()
+    public function getExtractFolder(): string
     {
         return $this->extractFolder;
     }
@@ -164,7 +165,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 04:11
      */
-    public function setDataList($dataList = array())
+    public function setDataList($dataList = array()): Zip
     {
         if (is_string($dataList)) {
             $dataList = array($dataList);
@@ -182,7 +183,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 04:37
      */
-    public function getDataList()
+    public function getDataList(): array
     {
         return $this->dataList;
     }
@@ -195,7 +196,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 15:09
      */
-    public function zip()
+    public function zip(): ArchiveInterface
     {
         $zip = static::setup();
 
@@ -210,7 +211,7 @@ class Zip
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/23/2021 16:15
      */
-    public function unzip()
+    public function unzip(): ArchiveInterface
     {
         $zip  = static::setup();
         $open = $zip->open($this->filename);
