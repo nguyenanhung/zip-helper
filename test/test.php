@@ -15,3 +15,4 @@ $zip->setDataList(
 $result = $zip->zip();
 
 d($result);
+d(directory_map(__DIR__ . '/../tmp'));
