@@ -4,6 +4,52 @@
 
 PHP Zip Helper - Basic, Simple and Lightweight
 
+## How to use
+
+### Setup helper
+
+Install helper with Composer
+
+```shell
+composer require nguyenanhung/zip-helper
+```
+
+### Code
+
+You can write your app, and see example code same bellow
+
+```php
+<?php
+
+use nguyenanhung\Libraries\Zip\Zip;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$fileTest = __DIR__ . '/tmp/test-file.zip';
+
+$zip = new Zip();
+$zip->setFilename($fileTest);
+$zip->setDataList(
+    array(
+        __DIR__ . '/docs', // Your Path
+        __DIR__ . '/docs/README.md' // Your file
+    )
+);
+
+// Compress with ZIP
+$result = $zip->zip(); // Add all data in $dataList to $filename
+
+d($result);
+d(directory_map(__DIR__ . '/tmp'));
+
+// Extract Zip file
+$zip->setExtractFolder(__DIR__ . '/tmp'); 
+$extract = $zip->unzip();
+d($extract);
+d(directory_map(__DIR__ . '/tmp'));
+
+```
+
 ## Contact & Support
 
 If any question & request, please contact following information
